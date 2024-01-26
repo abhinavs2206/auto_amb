@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Final_Project</string>
+    <string name="title_activity_maps1">MapsActivity1</string>
+    <string name="title_activity_user_maps">user_maps</string>
+    <string name="full_name">Full Name</string>
+    <string name="user_name">Username\n</string>
+</resources>
