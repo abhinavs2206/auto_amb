@@ -111,7 +111,7 @@ public class driver1 extends AppCompatActivity {
                 // Method to check the ToggleButton state
                 if(x)
                 {
-                    ww=FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                    ww=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                     wdatabase.child("try1").child("ready_drivers").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -119,7 +119,7 @@ public class driver1 extends AppCompatActivity {
                             Log.e("rd",rd.uname);
                             if(rd.set==1)
                             {
-                                wd=FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                                wd=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                                 wd.child("try1").child("ready_drivers").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
@@ -188,7 +188,7 @@ public class driver1 extends AppCompatActivity {
                 Log.e("lon",loc[0]);
                 Log.e("lat",loc[1]);
                 readydriver r1=new readydriver(loc[1],loc[0],user);
-                wdatabase= FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                 wdatabase.child("try1").child("ready_drivers").child(user).setValue(r1);
 
 //                wdatabase.child("try1").child("ready_drivers").child(user).child("lat").setValue(loc[1]);
@@ -208,7 +208,7 @@ public class driver1 extends AppCompatActivity {
             }
             availability=0;
             Log.e("state", "busy");
-            wdatabase = FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+            wdatabase = FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
             if (locfetched == 0) {
                 Toast.makeText(this, "Updated", Toast.LENGTH_SHORT);
             } else {
