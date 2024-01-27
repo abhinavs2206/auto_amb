@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:fontFamily="@font/comfortaabold"
+
         android:text="Racing to save lives!"
         android:textColor="@color/black"
         android:textSize="40dp"
@@ -85,7 +85,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="10dp"
-        android:fontFamily="@font/comfortaabold"
         android:gravity="center_horizontal"
         android:text="OR"
         android:textColor="@color/black"

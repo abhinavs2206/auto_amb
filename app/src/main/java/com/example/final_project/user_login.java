@@ -46,7 +46,7 @@ public class user_login extends AppCompatActivity {
                 else{
                     Boolean checkuserpass = check(user,passw);
                     if(checkuserpass==true){
-                        Toast.makeText(user_login.this, "Sign in successfull", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(user_login.this, "Sign in successful", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), user_1.class);
                         intent.putExtra("uname",user);
                         startActivity(intent);
@@ -65,12 +65,14 @@ public class user_login extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     public boolean check(String user, String passw)
     {
         wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        wdatabase.child("try1").child("app_users").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        wdatabase.child("user-details").child("app_users").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {

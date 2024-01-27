@@ -52,7 +52,7 @@ public class driver_signup extends AppCompatActivity {
                 else{
                     if(pass.equals(repass)){
                         h1= new driver_reg_obj(user,fullname, mailid,pass,mob);
-                        wdatabase.child("try1").child("drivers").child(user).setValue(h1);
+                        wdatabase.child("driver-details").child("drivers").child(user).setValue(h1);
                         Toast.makeText(driver_signup.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),driver_login.class);
                         startActivity(intent);

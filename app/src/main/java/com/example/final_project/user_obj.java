@@ -1,5 +1,7 @@
 package com.example.final_project;
 
+import androidx.annotation.NonNull;
+
 public class user_obj {
     public String uname,name,email,ph,pass;
     public user_obj() {
@@ -15,7 +17,7 @@ public class user_obj {
     public String getPass(){
         return this.pass;
     }
-    //    public String getlat(){
+//        public String getlat(){
 //        return this.lat;
 //    }
 //    public String getlon(){

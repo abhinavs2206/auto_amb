@@ -66,7 +66,7 @@ public class driver_login extends AppCompatActivity {
     public boolean check(String user, String passw)
     {
         wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        wdatabase.child("try1").child("drivers").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        wdatabase.child("driver-details").child("drivers").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -86,7 +86,7 @@ public class driver_login extends AppCompatActivity {
     }
 
     public void gosignup(View view) {
-        Intent obj = new Intent(getApplicationContext(),driver_signup.class);
-        startActivity(obj);
+        Intent obj1 = new Intent(getApplicationContext(),driver_signup.class);
+        startActivity(obj1);
     }
 }

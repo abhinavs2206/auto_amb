@@ -47,9 +47,9 @@ public class shaker extends AppCompatActivity implements SensorEventListener {
 
             float EG = SensorManager.GRAVITY_EARTH;
             float dvAccel = (x*x + y*y + z*z)/(EG+EG);
-//            Log.d(TAG, String.valueOf(x));
-//            Log.d(TAG, String.valueOf(y));
-//            Log.d(TAG, String.valueOf(z));
+            Log.d(TAG, String.valueOf(x));
+            Log.d(TAG, String.valueOf(y));
+            Log.d(TAG, String.valueOf(z));
 
             if(dvAccel>100.5)
             {

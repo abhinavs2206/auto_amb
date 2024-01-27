@@ -21,6 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".driver_login"></activity>
+        <activity android:name=".user_login"></activity>
+        <activity android:name=".driver_signup"></activity>
+        <activity android:name=".user_signup"></activity>
+
+
+
     </application>
 
 </manifest>
