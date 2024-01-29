@@ -33,7 +33,7 @@ public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallbac
 
         String user=getIntent().getStringExtra("res_from_driver");
         DatabaseReference d= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-        d.child("try1").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        d.child("user-details").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 user_req_obj rd=task.getResult().getValue(user_req_obj.class);
@@ -66,7 +66,7 @@ public class MapsActivity1 extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
     }
     public void mapReady() {
-        // Add a marker in Sydney and move the camera
+
         LatLng usermap = new LatLng(ulat, ulon);
         mMap.addMarker(new MarkerOptions().position(usermap).title("Marker in User"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(user));

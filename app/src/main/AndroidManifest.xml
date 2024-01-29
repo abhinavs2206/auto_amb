@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -26,8 +27,15 @@
         <activity android:name=".user_login"></activity>
         <activity android:name=".driver_signup"></activity>
         <activity android:name=".user_signup"></activity>
-
-
+        <activity android:name=".driver1"></activity>
+        <activity android:name=".user_1"></activity>
+        <activity android:name=".user_maps"></activity>
+        <activity android:name=".MapsActivity1"></activity>
+        <activity android:name=".readydriver"></activity>
+        <activity android:name=".user_obj"></activity>
+        <activity android:name=".user_req_obj"></activity>
+        <activity android:name=".driver_reg_obj"></activity>
+        <activity android:name=".LocationTrack"></activity>
 
     </application>
 

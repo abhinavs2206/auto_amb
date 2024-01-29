@@ -75,6 +75,7 @@ public class driver1 extends AppCompatActivity {
                 {
                     avail.setBackgroundColor(GREEN);
                     avail.setRotationX(-13);
+
                 }
                 else{
                     avail.setBackgroundColor(RED);
@@ -100,7 +101,7 @@ public class driver1 extends AppCompatActivity {
     public void fun()
     {
 
-        Log.e("inside","fun");
+        Log.d("inside","fun");
 
         handler = new Handler();
         toggleChecker = new Runnable() {

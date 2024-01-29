@@ -47,7 +47,7 @@ public class user_1 extends AppCompatActivity {
     String user;
     int locfetched = 0, loopend=0;
     double longitude,latitude;
-    user_req_obj res,check;
+    user_req_obj res,check,req1;
     DatabaseReference wdatabase,wdatabase1,wb;
     private ArrayList permissionsToRequest;
     private ArrayList permissionsRejected = new ArrayList();
@@ -116,10 +116,13 @@ public class user_1 extends AppCompatActivity {
                         }
                         else {
                             Log.e("wait","Firebase waiting");
-                            res= task.getResult().getValue(user_req_obj.class);
-                            Log.e("res",res.driver);
+//                            -------
 
-                            if("NA".equals(res.driver)){
+//                            res= task.getResult().getValue(user_req_obj.class);
+//                            Log.e("f","debugging");
+                            Log.d("res",req1.driver);
+
+                            if("NA".equals(req1.driver)){
                                 Log.e("WATCH","inside fetching");
                                 // Create and show the ProgressDialog
                                 progressDialog = new ProgressDialog(user_1.this);
@@ -159,11 +162,12 @@ public class user_1 extends AppCompatActivity {
 
         Log.e("Latitude:" , loc[1]);
         Log.e("Longitude:" , loc[0]);
-        user_req_obj req1=new user_req_obj(user,loc[1],loc[0]);
-        wdatabase= FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+//        -----------
+        req1=new user_req_obj(user,loc[1],loc[0]);
+        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         wdatabase.child("try1").child("user_reqs").child(user).setValue(req1);
 
-        if(wdatabase.child("try1").child("user_req").child(user).child("driver").get().toString()!="NAa")
+        if(wdatabase.child("try1").child("user_reqs").child(user).child("drivers").get().toString()!="NA")
         {
             Log.e("load","naa");
             pd.dismiss();
@@ -195,6 +199,7 @@ public class user_1 extends AppCompatActivity {
             loc[1] = String.valueOf(latitude);
             Log.e("lon",loc[0]);
             Log.e("lat",loc[1]);
+            Log.e("location-fetched", String.valueOf(locfetched));
         }
         else {
             locfetched=0;
@@ -206,10 +211,10 @@ public class user_1 extends AppCompatActivity {
         toggleChecker = new Runnable() {
             @Override
             public void run() {
-                Log.e("waitupdate","Inside waitfor change loop");
-                wdatabase1= FirebaseDatabase.getInstance("https://hosp-db-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                Log.e("waitupdate","Inside wait for change loop");
+                wdatabase1= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
-                wdatabase1.child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                wdatabase1.child("try1").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if(task.getResult()==null)
@@ -321,34 +326,34 @@ public class user_1 extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-//        handler.postDelayed(toggleChecker, 10000); // Start the initial check after 10 seconds
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+////        handler.postDelayed(toggleChecker, 10000); // Start the initial check after 10 seconds
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        handler.removeCallbacks(toggleChecker); // Stop the continuous checking
+//    }
+//
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        handler.removeCallbacks(toggleChecker); // Stop the continuous checking
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Add the value event listener to start listening for changes
-//        wdatabase1.addValueEventListener(valueEventListener);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        // Remove the value event listener to stop listening for changes
-//        wdatabase1.removeEventListener(valueEventListener);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        // Add the value event listener to start listening for changes
+////        wdatabase1.addValueEventListener(valueEventListener);
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//
+//        // Remove the value event listener to stop listening for changes
+////        wdatabase1.removeEventListener(valueEventListener);
+//    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
