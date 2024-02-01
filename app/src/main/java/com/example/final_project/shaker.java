@@ -2,6 +2,7 @@ package com.example.final_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,25 +17,25 @@ public class shaker extends AppCompatActivity implements SensorEventListener {
     private static final String TAG = "MainActivity";
     public int shake;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shaker);
-
-
-        lastUpdate = System.currentTimeMillis();
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor mySensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-        if(mySensor == null)
-        {
-            Toast.makeText(this, "no accelerometer detected in this device", Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        else{
-            sensorManager.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
-        }
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_shaker);
+//
+//
+//        lastUpdate = System.currentTimeMillis();
+//        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+//        Sensor mySensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//
+//        if(mySensor == null)
+//        {
+//            Toast.makeText(this, "no accelerometer detected in this device", Toast.LENGTH_SHORT).show();
+//            finish();
+//        }
+//        else{
+//            sensorManager.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
+//        }
+//    }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -47,17 +48,19 @@ public class shaker extends AppCompatActivity implements SensorEventListener {
 
             float EG = SensorManager.GRAVITY_EARTH;
             float dvAccel = (x*x + y*y + z*z)/(EG+EG);
-            Log.d(TAG, String.valueOf(x));
-            Log.d(TAG, String.valueOf(y));
-            Log.d(TAG, String.valueOf(z));
+            Log.e(TAG, String.valueOf(x));
+            Log.e(TAG, String.valueOf(y));
+            Log.e(TAG, String.valueOf(z));
 
-            if(dvAccel>100.5)
+            if(dvAccel>50.5)
             {
                 actualTime = System.currentTimeMillis();
-                if((actualTime-lastUpdate)>1000)
+                if((actualTime-lastUpdate)>500)
                 {
                     lastUpdate = actualTime;
                     shake++;
+                    Intent intent = new Intent(getApplicationContext(), user_1.class);
+                    startActivity(intent);
                     Log.d(TAG, "shake");
                 }
             }

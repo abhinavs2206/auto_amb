@@ -36,6 +36,7 @@
         <activity android:name=".user_req_obj"></activity>
         <activity android:name=".driver_reg_obj"></activity>
         <activity android:name=".LocationTrack"></activity>
+        <activity android:name=".shaker"></activity>
 
     </application>
 
