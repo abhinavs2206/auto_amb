@@ -109,7 +109,6 @@ public class driver1 extends AppCompatActivity {
             public void run() {
                 Log.e("inside","run");
                 boolean x=checkToggleButtonState();
-                // Method to check the ToggleButton state
                 if(x)
                 {
                     ww=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
@@ -192,8 +191,9 @@ public class driver1 extends AppCompatActivity {
                 wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                 wdatabase.child("try1").child("ready_drivers").child(user).setValue(r1);
 
-//                wdatabase.child("try1").child("ready_drivers").child(user).child("lat").setValue(loc[1]);
-//                wdatabase.child("try1").child("ready_drivers").child(user).child("user").setValue(user);
+                //To assign driver coordinates to user
+                wdatabase.child("try1").child("user_reqs").child(user).child("dlat").setValue(loc[1]);
+                wdatabase.child("try1").child("user_reqs").child(user).child("dlon").setValue(loc[0]);
             }
             else {
                 locfetched=0;

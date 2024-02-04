@@ -326,34 +326,6 @@ public class user_1 extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-////        handler.postDelayed(toggleChecker, 10000); // Start the initial check after 10 seconds
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        handler.removeCallbacks(toggleChecker); // Stop the continuous checking
-//    }
-//
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        // Add the value event listener to start listening for changes
-////        wdatabase1.addValueEventListener(valueEventListener);
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//
-//        // Remove the value event listener to stop listening for changes
-////        wdatabase1.removeEventListener(valueEventListener);
-//    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

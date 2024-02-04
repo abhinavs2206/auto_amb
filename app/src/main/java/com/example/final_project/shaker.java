@@ -17,25 +17,25 @@ public class shaker extends AppCompatActivity implements SensorEventListener {
     private static final String TAG = "MainActivity";
     public int shake;
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_shaker);
-//
-//
-//        lastUpdate = System.currentTimeMillis();
-//        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-//        Sensor mySensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//
-//        if(mySensor == null)
-//        {
-//            Toast.makeText(this, "no accelerometer detected in this device", Toast.LENGTH_SHORT).show();
-//            finish();
-//        }
-//        else{
-//            sensorManager.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
-//        }
-//    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shaker);
+
+
+        lastUpdate = System.currentTimeMillis();
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor mySensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        if(mySensor == null)
+        {
+            Toast.makeText(this, "no accelerometer detected in this device", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else{
+            sensorManager.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
