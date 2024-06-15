@@ -36,7 +36,7 @@ public class driver_signup extends AppCompatActivity {
         username=(EditText) findViewById(R.id.inputUsername);
         mail=(EditText) findViewById(R.id.inputEmail);
         signup=(Button)findViewById(R.id.btnRegister);
-        wdatabase=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase=FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

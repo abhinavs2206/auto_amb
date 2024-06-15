@@ -36,6 +36,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class driver1 extends AppCompatActivity {
+    private String urlDb = "https://auto-amb-fd668-default-rtdb.firebaseio.com/";
     int locfetched=0;
     int availability=0;
     String user;
@@ -56,7 +57,7 @@ public class driver1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver1);
         user = getIntent().getStringExtra("uname").toString();
-
+        Log.e("Msg",user+" Inside on create");
         permissions.add(ACCESS_FINE_LOCATION);
         permissions.add(ACCESS_COARSE_LOCATION);
         permissionsToRequest = findUnAskedPermissions(permissions);
@@ -111,7 +112,7 @@ public class driver1 extends AppCompatActivity {
                 boolean x=checkToggleButtonState();
                 if(x)
                 {
-                    ww=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                    ww=FirebaseDatabase.getInstance(urlDb).getReference();
                     wdatabase.child("try1").child("ready_drivers").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -119,18 +120,19 @@ public class driver1 extends AppCompatActivity {
                             Log.e("rd",rd.uname);
                             if(rd.set==1)
                             {
-                                wd=FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
-                                wd.child("try1").child("ready_drivers").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Log.e("status", "deleted");
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e("status", "deletion failed");
-                                    }
-                                });
+//                                wd=FirebaseDatabase.getInstance(urlDb).getReference();
+//                                wd.child("try1").child("ready_drivers").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void unused) {
+//                                        Log.e("status", "deleted");
+//                                    }
+//                                }).addOnFailureListener(new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        Log.e("status", "deletion failed");
+//                                    }
+//                                });
+                                Log.e("Msg","Driver Assigned to user");
                                 Intent obj = new Intent(getApplicationContext(),MapsActivity1.class);
                                 Log.e("driver book", "yes");
                                 obj.putExtra("res_from_driver", rd.usern);
@@ -152,14 +154,15 @@ public class driver1 extends AppCompatActivity {
     public boolean checkToggleButtonState()
     {
         boolean isChecked = avail.isChecked();
-        if(availability==1)
-        {
-            if(isChecked)
-            {
-                return true;
-            }
-        }
-        if (isChecked ) {
+//        if(availability==1)
+//        {
+//            if(isChecked)
+//            {
+//                return true;
+//            }
+//        }
+        if (isChecked) {
+            availability=1;
             Log.e("state","available");
             locationTrack = new LocationTrack(driver1.this);
             if (locationTrack.canGetLocation()) {
@@ -178,57 +181,60 @@ public class driver1 extends AppCompatActivity {
                 {
                     locfetched=1;
                 }
-                if(locfetched==0)
-                {
-                    availability=0;
-                    return false;
-                }
+//                if(locfetched==0)
+//                {
+//                    availability=0;
+//                    return false;
+//                }
                 loc[0] = String.valueOf(longitude);
                 loc[1] = String.valueOf(latitude);
                 Log.e("lon",loc[0]);
                 Log.e("lat",loc[1]);
                 readydriver r1=new readydriver(loc[1],loc[0],user);
-                wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                wdatabase= FirebaseDatabase.getInstance(urlDb).getReference();
                 wdatabase.child("try1").child("ready_drivers").child(user).setValue(r1);
 
                 //To assign driver coordinates to user
-                wdatabase.child("try1").child("user_reqs").child(user).child("dlat").setValue(loc[1]);
-                wdatabase.child("try1").child("user_reqs").child(user).child("dlon").setValue(loc[0]);
+                wdatabase.child("try1").child("user_reqs").child("adarsh").child("dlat").setValue(loc[1]);
+                wdatabase.child("try1").child("user_reqs").child("adarsh").child("dlon").setValue(loc[0]);
+                wdatabase.child("try1").child("user_reqs").child("adarsh").child("driver").setValue(user);
             }
             else {
                 locfetched=0;
-//                locationTrack.showSettingsAlert();
+                locationTrack.showSettingsAlert();
 
             }
-            availability=1;
+
             return true;
-        } else {
-            if(availability==0)
-            {
-                return false;
-            }
-            availability=0;
+        }
+        else if(availability==0 && !isChecked) {
+//            if(availability==0)
+//            {
+//                return false;
+//            }
+//            availability=0;
             Log.e("state", "busy");
-            wdatabase = FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+            wdatabase = FirebaseDatabase.getInstance(urlDb).getReference();
             if (locfetched == 0) {
                 Toast.makeText(this, "Updated", Toast.LENGTH_SHORT);
             } else {
                 //remove driver data
-                wdatabase.child("try1").child("ready_drivers").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Log.e("status", "deleted");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("status", "deletion failed");
-                    }
-                });
+//                wdatabase.child("try1").child("ready_drivers").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+//                        Log.e("status", "deleted");
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.e("status", "deletion failed");
+//                    }
+//                });
                 Toast.makeText(this, "Table Updated", Toast.LENGTH_SHORT);
             }
             return false;
         }
+        return false;
     }
 
 

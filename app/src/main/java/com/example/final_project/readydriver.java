@@ -7,7 +7,8 @@ public class readydriver {
         this.lat=s;
         this.lon=s1;
         this.uname=user;
-        this.set=0;
+        this.set=1;
+        this.usern="adarsh";
     }
     public readydriver() {
         this.lat="0.0";

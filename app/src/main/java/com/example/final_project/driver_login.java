@@ -65,7 +65,7 @@ public class driver_login extends AppCompatActivity {
 
     public boolean check(String user, String passw)
     {
-        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
         wdatabase.child("driver-details").child("drivers").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
