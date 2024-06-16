@@ -107,7 +107,7 @@ public class user_1 extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                wb= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                wb= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
                 wb.child("try1").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -164,10 +164,10 @@ public class user_1 extends AppCompatActivity {
         Log.e("Longitude:" , loc[0]);
 //        -----------
         req1=new user_req_obj(user,loc[1],loc[0]);
-        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
         wdatabase.child("try1").child("user_reqs").child(user).setValue(req1);
 
-        if(wdatabase.child("try1").child("user_reqs").child(user).child("drivers").get().toString()!="NA")
+        if(wdatabase.child("try1").child("user_reqs").child(user).child("driver").get().toString()!="NA")
         {
             Log.e("load","naa");
             pd.dismiss();
@@ -212,7 +212,7 @@ public class user_1 extends AppCompatActivity {
             @Override
             public void run() {
                 Log.e("waitupdate","Inside wait for change loop");
-                wdatabase1= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+                wdatabase1= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
 
                 wdatabase1.child("try1").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override

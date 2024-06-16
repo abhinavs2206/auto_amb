@@ -61,7 +61,7 @@ public class user_maps extends FragmentActivity implements OnMapReadyCallback {
 //        t2.setText(res.eta);
 //        t1.setText(res.user);
 
-        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
         wdatabase.child("try1").child("user_reqs").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -83,7 +83,7 @@ public class user_maps extends FragmentActivity implements OnMapReadyCallback {
                 }
             }
         });
-        wdatabase = FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase = FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
         wdatabase.child("try1").child("user_reqs").child(user).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

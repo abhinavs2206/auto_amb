@@ -71,7 +71,7 @@ public class user_login extends AppCompatActivity {
 
     public boolean check(String user, String passw)
     {
-        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-744d8-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        wdatabase= FirebaseDatabase.getInstance("https://auto-amb-fd668-default-rtdb.firebaseio.com/").getReference();
         wdatabase.child("user-details").child("app_users").child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -80,11 +80,16 @@ public class user_login extends AppCompatActivity {
                 }
                 else {
                     res= task.getResult().getValue(user_obj.class);
-                    if(passw.equals(res.getPass())){
-                        c=true;
-                    }else {
-                        c=false;
+                    if(res != null){
+                        if(passw.equals(res.getPass())){
+                            c=true;
+                        }else {
+                            c=false;
+                        }
+                    }else{
+                        Log.e("Msg","Null Object");
                     }
+
                 }
             }
         });
